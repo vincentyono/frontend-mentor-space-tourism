@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-blue-900: #0b0d17;
+  --color-blue-300: #d0d6f9;
+  --color-white: #ffffff;
+}
+
+body {
+  height: 100vh;
+}
