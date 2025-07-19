@@ -19,9 +19,21 @@ body {
 	background-repeat: no-repeat;
 }
 
+.background-destination {
+	background-image: url("/assets/destination/background-destination-mobile.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
 @media screen and (min-width: 640px) {
 	.background-home {
 		background-image: url("/assets/home/background-home-tablet.jpg");
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+
+	.background-destination {
+		background-image: url("/assets/destination/background-destination-tablet.jpg");
 		background-size: cover;
 		background-repeat: no-repeat;
 	}
@@ -30,6 +42,12 @@ body {
 @media screen and (min-width: 1024px) {
 	.background-home {
 		background-image: url("/assets/home/background-home-desktop.jpg");
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+
+	.background-destination {
+		background-image: url("/assets/destination/background-destination-desktop.jpg");
 		background-size: cover;
 		background-repeat: no-repeat;
 	}

@@ -15,7 +15,7 @@ export default function Home() {
 					"lg:items-end",
 					"gap-6",
 					"py-6",
-					"pt-[22rem]",
+					"lg:pt-[22rem]",
 					"items-center",
 				)}
 			>

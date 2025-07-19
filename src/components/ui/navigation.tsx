@@ -4,10 +4,11 @@ import { animate } from "animejs";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/utils/classname";
 
 export function Navigation() {
+	const wrapperRef = useRef<HTMLDivElement>(null);
 	const pathname = usePathname();
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -22,8 +23,23 @@ export function Navigation() {
 		left: "100%",
 	});
 
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (
+				wrapperRef.current &&
+				!wrapperRef.current.contains(event.target as Node)
+			) {
+				setIsDropdownOpen(false);
+			}
+		};
+		document.addEventListener("mousedown", handleClickOutside);
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, []);
+
 	return (
-		<nav className="relative">
+		<nav ref={wrapperRef} className="relative">
 			<button
 				type="button"
 				className={cn("sm:hidden", "cursor-pointer")}
@@ -64,6 +80,7 @@ export function Navigation() {
 					"lg:gap-12",
 					"lg:px-[4rem]",
 					"lg:pl-[12rem]",
+					"z-10",
 					!isDropdownOpen ? "navigation-open" : "navigation-close",
 				)}
 			>
@@ -108,8 +125,8 @@ export function Navigation() {
 						"sm:border-r-0",
 						"sm:border-b-4",
 						"border-transparent",
-						pathname === "/destination" && "border-white",
-						pathname !== "/destination" && "hover:border-gray-400",
+						pathname.includes("/destination") && "border-white",
+						!pathname.includes("/destination") && "hover:border-gray-400",
 					)}
 				>
 					<Link href="/destination">
@@ -123,8 +140,8 @@ export function Navigation() {
 						"sm:border-r-0",
 						"sm:border-b-4",
 						"border-transparent",
-						pathname === "/crew" && "border-white",
-						pathname !== "/crew" && "hover:border-gray-400",
+						pathname.includes("/crew") && "border-white",
+						!pathname.includes("/crew") && "hover:border-gray-400",
 					)}
 				>
 					<Link href="/crew">
@@ -138,8 +155,8 @@ export function Navigation() {
 						"sm:border-r-0",
 						"sm:border-b-4",
 						"border-transparent",
-						pathname === "/technology" && "border-white",
-						pathname !== "/technology" && "hover:border-gray-400",
+						pathname.includes("/technology") && "border-white",
+						!pathname.includes("/technology") && "hover:border-gray-400",
 					)}
 				>
 					<Link href="/technology">
