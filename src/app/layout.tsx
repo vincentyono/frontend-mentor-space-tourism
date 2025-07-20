@@ -4,16 +4,19 @@ import { Barlow, Barlow_Condensed, Bellefair } from "next/font/google";
 import "@/app/globals.css";
 
 const barlow = Barlow({
+	subsets: ["latin"],
 	weight: ["400", "800"],
 	variable: "--font-barlow",
 });
 
 const barlowCondensed = Barlow_Condensed({
+	subsets: ["latin"],
 	weight: ["400", "800"],
 	variable: "--font-barlowCondensed",
 });
 
 const bellefair = Bellefair({
+	subsets: ["latin"],
 	weight: ["400"],
 	variable: "--font-bellefair",
 });
