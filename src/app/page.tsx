@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Header } from "@/components/layout/header";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/utils/classname";
@@ -60,7 +61,9 @@ export default function Home() {
 						world experience!
 					</p>
 				</div>
-				<Button className={cn("self-center")}>EXPLORE</Button>
+				<Button className={cn("self-center", "mt-[7.5rem]")}>
+					<Link href="/destination/moon">EXPLORE</Link>
+				</Button>
 			</div>
 		</div>
 	);
